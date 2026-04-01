@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <h1>Hey there you go , you have uploaded your image..</h1>
+        {% for data in images %}
+           <h3>{{ data.name }}</h3>
+           <h3>{{ data.msg }}</h3>
+           {% if data.img %}
+                <img src="{{data.img.url}}" height="500px" width="700px" alt="no img">
+            {% endif %}
+        {% endfor %}
+  
+    
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/countries.css'%}">
+</head>
+<body>
+    
+    {%for i in data%}
+    <div class="container">
+        <h2>NAME :{{i.name}}</h2>
+        <h2>CAPITAL :{{i.capital}}</h2>
+        <h2>CALL-CODE :{{i.callingCodes}}</h2>
+        <h2>POPULATION :{{i.population}}</h2>
+        <img src="{{i.flags.svg}}" alt="" width="100px" height="100px">
+    </div>
+    {%endfor%}
+
+</body>
+</html>

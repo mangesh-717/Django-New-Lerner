@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block starts %}
+    <h1>this is an base.html</h1>
+<form action="" method="post">
+    {% csrf_token%}
+
+{{ form }}
+<input type="submit" value="Submit">
+
+</form>
+    <!-- <form action="" method="post">
+        {% csrf_token %}
+        <br>
+        <label for="name">Update Name:</label>
+        <input type="text" id="name" name="name">
+        <br><br>
+        <label for="email">phon:</label>
+        <input type="tel" id="phon" name="Phon">
+        <br><br>
+        <label for="position">Select Position:</label>
+        <select id="position" name="position">
+          <option value="developer">jr Developer</option>
+          <option value="designer">Designer</option>
+          <option value="designer">Doctor</option>
+          <option value="designer">Data engineer</option>
+          <option value="designer">python developer</option>
+          <option value="designer">Django developer</option>
+          <option value="designer">Sql developer</option>
+          <option value="designer">Database administrate</option>
+          <option value="manager">Manager</option>
+        </select><br><br>
+        <input type="submit" value="Submit">
+      </form>
+     -->
+
+
+
+    {% endblock %}
+</body>
+</html>

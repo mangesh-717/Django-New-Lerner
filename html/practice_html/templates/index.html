@@ -1,0 +1,37 @@
+{% extends "basic.html" %}
+{% block start %}
+  
+    <h1>hye its templates</h1>
+
+
+    <h2>data in table form</h2>
+
+    <table style="width: 100%;" >
+<tr>
+    <th>s.no</th>
+    <th>name</th>
+    <th>email</th>
+    <th>education</th>
+    <th>age</th>
+    <th>can vote</th>
+</tr>
+<tr>
+    {% for i in peoples %}
+    <td>{{forloop.counter}}</td>
+    <td>{{i.name}}</td>
+    <td>{{i.email}}</td>
+    <td>{{i.education}}</td>
+    <td>{{i.age}}</td>
+    <td>
+        {% if i.age >= 28 %} 👍
+    </td>
+    {% endif %}
+</tr>
+{% endfor %}
+    </table>
+
+
+
+    <a href="second/" >click to second</a>
+    
+{% endblock %}

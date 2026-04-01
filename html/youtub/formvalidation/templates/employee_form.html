@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block starts %}
+
+<h2>this is an form page</h2>
+
+<!-- {{form}} -->
+
+
+<style>
+    /* Add your custom CSS styles for the form here */
+    .my-form {
+        /* Add your styling properties */
+        margin: 20px;
+    }
+
+    .form-field {
+        /* Add space between form fields using margin and padding */
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    /* Add more styles as needed */
+</style>
+</head>
+<body>
+
+<h2>Your Form Title</h2>
+
+<form method="post" enctype="multipart/form-data" class="my-form">
+    {% csrf_token %}
+    <div class="form-field">
+        {{ form.fullname.label_tag }}
+        {{ form.fullname }}
+    </div>
+    <div class="form-field">
+        {{ form.mobile.label_tag }}
+        {{ form.mobile }}
+    </div>
+    <div class="form-field">
+        {{ form.emp_code.label_tag }}
+        {{ form.emp_code }}
+    </div>
+    <div class="form-field">
+        {{ form.position.label_tag }}
+        {{ form.position }}
+    </div>
+    <!-- Repeat for other form fields -->
+
+    <input type="submit" value="Submit">
+</form>
+
+
+
+{% endblock starts%}

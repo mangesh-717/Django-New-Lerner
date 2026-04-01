@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .load-more-btn {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #2b412b;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Transaction History</h1>
+</header>
+<h2>Display Last Transactions</h2>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <label for="num_transactions">Number of Last Transactions:</label>
+    <input type="number" id="num_transactions" name="num_transactions" min="1" required>
+    <button type="submit">Display</button>
+</form>
+<main>
+    <table id="transaction-table">
+        <tr>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Reciver</th>
+            <th>Date</th>
+        </tr>
+        {% for transaction in data|slice:":5" %}
+            <tr>
+                <td>{{ transaction.type }}</td>
+                <td>${{ transaction.amount }}</td>
+                <td>${{ transaction.reciver }}</td>
+                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.time }}</td>
+            </tr>
+        {% endfor %}    
+    </table>
+    <button class="load-more-btn" onclick="loadMoreTransactions()">Load More</button>
+</main>
+
+
+</body>
+</html>

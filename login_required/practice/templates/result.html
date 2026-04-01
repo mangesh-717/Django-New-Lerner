@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>this is result in new3</h4>
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <table style="width: 70%;">
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>About</th>
+            <th>image</th>
+            <th>maintaining</th>
+        </tr>
+        {% for i in data %}
+
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td><img src="{{i.photo.url}}" width="150px" height="180px" alt=""></td>
+             <td><button><a href="{% url 'update_student' i.id %}" class="button">Update</a></button><br><br>
+             <button><a href="{% url 'delete_student' i.id %}" class="button">Delete</a></button></td>
+        </tr>
+        {% endfor %}    
+    </table>
+</body>
+</html>

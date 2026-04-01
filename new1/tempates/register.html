@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Register</h3>
+{%for i in messages %}
+<h4>{{ i.tags }} {{ i }}</h4>
+{% endfor %}
+    <form method="post" action="{% url 'registerHome' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Already have an account
+        <a href="{% url 'login' %}">Login<br></a>
+
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

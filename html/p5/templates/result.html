@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+{% block starts %}
+<style>
+    table,th,td{
+        border: 1px solid black;
+    }
+</style>
+
+
+
+ 
+<h1> data stored succesfully</h1>
+
+
+  <div class="alert alert-success" role="alert" id="alert-message">
+    <strong>!succesfully</strong> Your data has succesfully added in database
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <script>
+    // Automatically hide the alert after 3 seconds (adjust the time as needed)
+    setTimeout(function(){
+      var alertElement = document.getElementById('alert-message');
+      if (alertElement) {
+        alertElement.style.display = 'none';
+      }
+    }, 3000);
+  </script>
+
+<table style="width: 100%;">
+    <tr>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Age</th>
+        <th>Phon Number</th>
+        <th>email</th>
+    </tr>
+    {% for contact in contacts %}
+
+    <tr>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.last_name }}</td>
+        <td>{{ contact.age }}</td>
+        <td>{{ contact.phon }}</td>
+        <td>{{ contact.email }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+       
+</ul>
+
+
+
+
+
+
+
+
+{% endblock %}

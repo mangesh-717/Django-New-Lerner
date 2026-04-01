@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgb(192, 255, 217);
+        }
+        a{
+            width: 300px;
+            height: 60px;
+            font-size: 25px;
+            background-color: rgb(174, 255, 0);
+            color: rgb(3, 116, 214);
+            padding: 10px 10px ;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 20px;
+           
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ALL USER'S DETAILS...</h1>
+    <table align="center" border="1" cellpadding='16px' >
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>usrname</th>
+            <th>email</th>
+            <th>shreet</th>
+            <th>city</th>
+            <th>phone</th>
+            <th>web-site</th>
+        </tr>
+        {%for i in results %}
+        <tr>
+            <th>{{i.id}}</th>
+            <th>{{i.name}}</th>
+            <th>{{i.username}}</th>
+            <th>{{i.email}}</th>
+            <th>{{i.address.street}}</th>
+            <th>{{i.address.city}}</th>
+            <th>{{i.phone}}</th>
+            <th>{{i.website}}</th>
+        </tr>
+        {%endfor%}
+
+    </table>
+    <a href="{%url 'countries'%}" >countrys data</a>
+</body>
+
+</html>

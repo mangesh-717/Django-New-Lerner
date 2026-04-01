@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block starts %}
+
+<style>
+    table,th,td{border: 1px solid black;}
+
+</style>
+<h1>this is employee list page</h1>
+<!-- {{ records }} -->
+<table style="width: 100%;">
+    <tr>
+        <th>Full name</th>
+        <th>Emp code</th>
+        <th>Mobile</th>
+        <th>Position</th>
+        <th>Actions</th>
+    </tr>
+    <tr>
+        {% for i in records %}
+
+        <td>{{i.fullname}}
+        </td>
+        <td>{{ i.emp_code }}
+        </td>
+        <td>{{ i.mobile }}
+        </td>
+        <td>{{ i.position }}
+        </td>
+        <td><a href="{% url 'employee_delete' i.id %}" class="btn btn-danger">Delete</a><br>
+        <!-- <td><a href.="{{i.id}}/" class="btn btn-danger">Delete</a><br> -->
+        <a href="{% url 'employee_update' i.id %}" class="btn btn-danger">update</a>
+
+        </td>
+        <!--delete-list/<id>/ -->
+    </tr>
+
+{% endfor %}
+
+
+
+{% endblock%}

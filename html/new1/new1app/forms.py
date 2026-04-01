@@ -1,0 +1,16 @@
+from django import forms
+from .models import student
+
+class studentform(forms.ModelForm):
+
+    class Meta:
+        model = student
+        fields = "__all__"
+
+class UpdateInformationForm(forms.Form):
+    name=forms.CharField()
+    email=forms.EmailField()
+
+    # fields =('name','email')
+        # fields = ["name","email"]
+    

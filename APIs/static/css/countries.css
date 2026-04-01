@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* flex-direction: column; */
+    flex-wrap: wrap;   
+}
+.container{
+    width: 400px;
+    height: 300px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

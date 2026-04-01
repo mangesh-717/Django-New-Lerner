@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .my-form {
+            /* Add your styling properties */
+            margin: 20px;
+        }
+
+        .form-field {
+            /* Add space between form fields using margin */
+            margin-bottom: 10px;
+        }
+</style>
+<body>
+
+
+
+
+    <form action="{% url 'index' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- {{form}} -->
+        <div class="form-field">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+        <div class="form-field">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+        <div class="form-field">
+            {{ form.photo.label_tag }}
+            {{ form.photo }}
+        </div>
+        <input type="submit" value="submit" >
+    </form>
+
+    {% for i in data %}
+    <h5>{{i.id}}</h5>
+    <h5>{{i.name}}</h5>
+    <h5>{{i.email}}</h5>
+    {% if i.photo %}
+    <img src = {{i.photo.url}} height="100px" width="100px" alt="none">
+    {% endif %}
+    {% endfor %}
+    
+</body>
+</html>
+
+

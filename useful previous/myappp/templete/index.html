@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>My name is mangesh {{name}}sathe</h1>
+    <hr>
+    <h1>Cities Names</h1>
+    <ol>
+        {% for city in cities %}
+        <li>{{city}}</li>
+        {% endfor %}
+    </ol>
+    <hr>
+    <h1>Students who scored more than 70%</h1>
+    {% for data in std_details %}
+        {% if data.marks >= 70 %}
+            <h3> {{data.name }}</h3>
+        {% endif %}
+    {% endfor %}
+    <hr>
+    <h2> list of students</h2>
+    <table border="2px" cellpadding="6px">
+        <tr>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>MARKS</th>
+            <th>DEGREE</th>
+            <th>STREAM</th>
+        </tr>
+        {% for data in std_details %}
+        <tr>
+            <td>{{ data.name }}</td>
+            <td>{{ data.age }}</td>
+            <td>{{ data.marks }}</td>
+            <td>{{ data.degree }}</td>
+            <td>{{ data.stream }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

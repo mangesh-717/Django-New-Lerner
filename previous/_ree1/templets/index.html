@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>form is this</h1>
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="SUBMIT">
+    </form>
+
+    <hr>
+    <ul>
+        <li><a href="{% url '_ree1app:display' %}">Display</a></li>
+        <li><a href="{% url '_ree1app:contact' %}">Contact</a></li>
+        <li><a href="{% url '_ree1app:about' %}">About</a></li>
+        <li><a href="{% url '_ree1app:carrier' %}">Carrer</a></li>
+    </ul>
+</body>
+</html>
