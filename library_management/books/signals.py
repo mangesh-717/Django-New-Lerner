@@ -1,0 +1,24 @@
+from django.db.models.signals import post_migrate
+from django.dispatch import receiver
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
+from .models import Book
+
+
+@receiver(post_migrate)
+def create_user_roles(sender, **kwargs):
+    if sender.name != 'books':
+        return
+
+    admin_group, _ = Group.objects.get_or_create(name='Admin')
+    user_group, _ = Group.objects.get_or_create(name='User')
+
+    content_type = ContentType.objects.get_for_model(Book)
+    permissions = Permission.objects.filter(content_type=content_type)
+
+    for perm in permissions:
+        if perm.codename in ['add_book', 'change_book', 'view_book']:
+            admin_group.permissions.add(perm)
+
+        if perm.codename == 'view_book':
+            user_group.permissions.add(perm)

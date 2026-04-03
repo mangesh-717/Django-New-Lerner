@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrape Books</title>
+</head>
+<body>
+    <h2>Scrape Books</h2>
+
+
+
+
+<form method="post">
+    {% csrf_token %}
+
+    <select name="category_id" required>
+        <option value="">Select Category</option>
+        {% for cat in categories %}
+            <option value="{{ cat.id }}">{{ cat.name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Scrape</button>
+</form>
+
+<a href="{% url 'book_list' %}">Back</a>
+
+<a href="{% url 'book_list' %}">Back</a>
+</body>
+</html>

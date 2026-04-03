@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Library</title>
+</head>
+<body>
+
+<h2>Book Library</h2>
+Logged in as: {{ request.user.username }} |
+<form method="post" action="{% url 'logout' %}" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form></p>
+
+{% if perms.books.add_book %}
+    <a href="{% url 'add_book' %}">Add Book</a> |
+    <a href="{% url 'scrape' %}">Scrape Books</a>
+{% endif %}
+
+<hr>
+
+<form method="get">
+    <select name="category">
+        <option value="">All Categories</option>
+        {% for cat in categories %}
+            <option value="{{ cat.id }}"
+                {% if selected_category == cat.id|stringformat:"s" %}
+                    selected
+                {% endif %}
+            >
+                {{ cat.name }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filter</button>
+</form>
+
+<hr>
+
+<table border="1" cellpadding="8">
+<tr>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Actions</th>
+</tr>
+
+{% for book in page_obj %}
+<tr>
+    <td>
+        <img src="{{ book.image_url }}" width="80">
+    </td>
+    <td>{{ book.title }}</td>
+    <td>{{ book.category.name }}</td>
+    <td>£{{ book.price }}</td>
+    <td>
+        {% if perms.books.change_book %}
+            <a href="{% url 'edit_book' book.id %}">Edit</a>
+        {% endif %}
+
+        {% if perms.books.delete_book %}
+            <a href="{% url 'delete_book' book.id %}">Delete</a>
+        {% endif %}
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="5">No books available.</td>
+</tr>
+{% endfor %}
+</table>
+
+<hr>
+
+<!-- PAGINATION CONTROLS -->
+
+<div>
+    {% if page_obj.has_previous %}
+        <a href="?page=1{% if selected_category %}&category={{ selected_category }}{% endif %}">First</a>
+
+        <a href="?page={{ page_obj.previous_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}">
+            Previous
+        </a>
+    {% endif %}
+
+    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if selected_category %}&category={{ selected_category }}{% endif %}">
+            Next
+        </a>
+
+        <a href="?page={{ page_obj.paginator.num_pages }}{% if selected_category %}&category={{ selected_category }}{% endif %}">
+            Last
+        </a>
+    {% endif %}
+</div>
+
+</body>
+</html>
